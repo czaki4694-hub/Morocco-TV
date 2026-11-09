@@ -24,6 +24,9 @@ class MainActivity : Activity() {
 
     private lateinit var grid: GridLayout
     private lateinit var info: TextView
+    private val names = ArrayList<String>()
+    private val urls = ArrayList<String>()
+    private val types = ArrayList<String>()
 
     private fun dp(v: Int) = (v * resources.displayMetrics.density).toInt()
 
@@ -36,13 +39,11 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val root = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setBackgroundColor(Color.parseColor("#0B1020"))
             setPadding(dp(16), dp(44), dp(16), dp(8))
         }
-
         root.addView(TextView(this).apply {
             text = "MOROCCO TV"
             textSize = 24f
@@ -56,7 +57,6 @@ class MainActivity : Activity() {
             setTextColor(Color.parseColor("#8E96B0"))
             setPadding(0, dp(2), 0, dp(16))
         })
-
         info = TextView(this).apply {
             textSize = 14f
             setTextColor(Color.parseColor("#8E96B0"))
@@ -64,15 +64,11 @@ class MainActivity : Activity() {
             setPadding(0, dp(24), 0, dp(24))
         }
         root.addView(info)
-
         grid = GridLayout(this).apply { columnCount = 2 }
         root.addView(
             ScrollView(this).apply { addView(grid) },
-            LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f
-            )
+            LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f)
         )
-
         setContentView(root)
         load()
     }
@@ -85,16 +81,19 @@ class MainActivity : Activity() {
                 c.connectTimeout = 8000
                 c.readTimeout = 8000
                 val arr = JSONArray(c.inputStream.bufferedReader().readText())
-                val names = ArrayList<String>()
-                val urls = ArrayList<String>()
+                val n = ArrayList<String>(); val u = ArrayList<String>(); val t = ArrayList<String>()
                 for (i in 0 until arr.length()) {
                     val o = arr.getJSONObject(i)
-                    names.add(o.getString("name"))
-                    urls.add(o.getString("url"))
+                    n.add(o.getString("name"))
+                    u.add(o.getString("url"))
+                    t.add(o.optString("type", "hls"))
                 }
                 runOnUiThread {
+                    names.clear(); names.addAll(n)
+                    urls.clear(); urls.addAll(u)
+                    types.clear(); types.addAll(t)
                     info.visibility = View.GONE
-                    render(names, urls)
+                    render()
                 }
             } catch (e: Exception) {
                 runOnUiThread { info.text = "تعذر تحميل القنوات، تأكد من الأنترنت" }
@@ -102,7 +101,26 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun render(names: ArrayList<String>, urls: ArrayList<String>) {
+    private fun open(i: Int) {
+        if (types[i] == "web") {
+            startActivity(Intent(this, WebActivity::class.java).putExtra("url", urls[i]))
+            return
+        }
+        val hn = ArrayList<String>(); val hu = ArrayList<String>()
+        var start = 0
+        for (k in names.indices) if (types[k] != "web") {
+            if (k == i) start = hn.size
+            hn.add(names[k]); hu.add(urls[k])
+        }
+        startActivity(
+            Intent(this, PlayerActivity::class.java)
+                .putStringArrayListExtra("names", hn)
+                .putStringArrayListExtra("urls", hu)
+                .putExtra("index", start)
+        )
+    }
+
+    private fun render() {
         grid.removeAllViews()
         val w = (resources.displayMetrics.widthPixels - dp(32)) / 2
         for (i in names.indices) {
@@ -111,14 +129,7 @@ class MainActivity : Activity() {
                 gravity = Gravity.CENTER
                 background = shape("#151B33", 18, "#2A3358")
                 setPadding(dp(12), dp(28), dp(12), dp(28))
-                setOnClickListener {
-                    startActivity(
-                        Intent(this@MainActivity, PlayerActivity::class.java)
-                            .putStringArrayListExtra("names", names)
-                            .putStringArrayListExtra("urls", urls)
-                            .putExtra("index", i)
-                    )
-                }
+                setOnClickListener { open(i) }
             }
             card.addView(TextView(this).apply {
                 text = names[i].take(1).uppercase()
@@ -135,12 +146,11 @@ class MainActivity : Activity() {
                 setTextColor(Color.WHITE)
                 setPadding(0, dp(12), 0, 0)
             })
-            val lp = GridLayout.LayoutParams().apply {
+            grid.addView(card, GridLayout.LayoutParams().apply {
                 width = w - dp(8)
                 height = GridLayout.LayoutParams.WRAP_CONTENT
                 setMargins(dp(4), dp(4), dp(4), dp(4))
-            }
-            grid.addView(card, lp)
+            })
         }
     }
 }
