@@ -1,12 +1,12 @@
 [
-  {"name": "الأولى", "type": "web", "url": "https://www.alaoula.ma"},
+  {"name": "الأولى", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_aloula_w1dqfwm/corp/73_aloula_w1dqfwm_240p/chunks_dvr.m3u8?token=vPKS2MpghtET21pb_XlD6CYRIBG4sAy9KnUoA6RJg5w&expires=1794189398&token_path=%2Fabr_corp%2F73_aloula_w1dqfwm"},
   {"name": "2M", "type": "web", "url": "https://2m.ma"},
-  {"name": "الرياضية", "type": "web", "url": "https://www.snrt.ma"},
-  {"name": "الرابعة", "type": "web", "url": "https://www.snrt.ma"},
-  {"name": "المغربية", "type": "web", "url": "https://www.snrt.ma"},
-  {"name": "السادسة", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "الرياضية", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_arryadia_k2tgcj0/corp/73_arryadia_k2tgcj0_240p/chunks_dvr.m3u8?token=UlWmWoomXbPgExpcqpRZahWu7IqYSi3Jpbc1CEVgilY&expires=1794189471&token_path=%2Fabr_corp%2F73_arryadia_k2tgcj0"},
+  {"name": "الرابعة", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_arrabia_hthcj4p/corp/73_arrabia_hthcj4p_240p/chunks_dvr.m3u8?token=-tTkwfSr7iCXSEOIm0_aK0gxNH9TEOPUN3yZd19jl90&expires=1794189492&token_path=%2Fabr_corp%2F73_arrabia_hthcj4p"},
+  {"name": "المغربية", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_almaghribia_83tz85q/corp/73_almaghribia_83tz85q_240p/chunks_dvr.m3u8?token=MJYA6g39-dXqT0dW5rGbcPHJw55epJ5ozFifZHfT398&expires=1794189521&token_path=%2Fabr_corp%2F73_almaghribia_83tz85q"},
+  {"name": "السادسة", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_assadissa_7b7u5n1/corp/73_assadissa_7b7u5n1_240p/chunks_dvr.m3u8?token=XuE7pRdquSmHLvxrzdj8B5s1OK38BqouIFnBjpfoOTk&expires=1794189541&token_path=%2Fabr_corp%2F73_assadissa_7b7u5n1"},
   {"name": "تمازيغت", "type": "web", "url": "https://www.snrt.ma"},
-  {"name": "العيون", "type": "web", "url": "https://www.snrt.ma"},
-  {"name": "أفلام TV", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "العيون", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_laayoune_pgagr52/corp/73_laayoune_pgagr52_240p/chunks_dvr.m3u8?token=xvZVcb5D0tv7NKgynwl4aFk0TXBQNoMK5tGAhGWkj5c&expires=1794189440&token_path=%2Fabr_corp%2F73_laayoune_pgagr52"},
+  {"name": "أفلام TV", "type": "web", "url": "https://cdn.live.easybroadcast.io/abr_corp/73_tamazight_tccybxt/corp/73_tamazight_tccybxt_240p/chunks_dvr.m3u8?token=BBZYchwDS2_bQ57pYynbwlQ7Rnv5WsbQ56DgMZiUqIs&expires=1794189562&token_path=%2Fabr_corp%2F73_tamazight_tccybxt"},
   {"name": "ميدي1 تي في", "type": "web", "url": "https://www.medi1tv.com"}
 ]
