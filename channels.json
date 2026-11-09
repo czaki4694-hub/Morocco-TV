@@ -1,3 +1,12 @@
 [
-  {"name": "Test Stream", "logo": "", "url": "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"}
+  {"name": "الأولى", "type": "web", "url": "https://www.alaoula.ma"},
+  {"name": "2M", "type": "web", "url": "https://2m.ma"},
+  {"name": "الرياضية", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "الرابعة", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "المغربية", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "السادسة", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "تمازيغت", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "العيون", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "أفلام TV", "type": "web", "url": "https://www.snrt.ma"},
+  {"name": "ميدي1 تي في", "type": "web", "url": "https://www.medi1tv.com"}
 ]
